@@ -6,23 +6,23 @@
             <legend>基本信息</legend>
             <p>
                 <label for="username">用户名：</label>
-                <input type="text" id="username" name="username" placeholder="请输入用户名" required>
+                <input type="text" id="username" name="username" v-model="username" placeholder="请输入用户名" required>
             </p>
             <p>
                 <label for="password">密码：</label>
-                <input type="password" id="password" name="password" placeholder="请输入密码" required>
+                <input type="password" id="password" name="password" v-model="password" placeholder="请输入密码" required>
             </p>
             <p>
                 <label for="confirmPassword">确认密码：</label>
-                <input type="password" id="confirmPassword" name="confirmPassword" placeholder="请再次输入密码" required>
+                <input type="password" id="confirmPassword" name="confirmPassword" v-model="confirmPassword" placeholder="请再次输入密码" required>
             </p>
             <p>
                 <label for="email">邮箱：</label>
-                <input type="email" id="email" name="email" placeholder="请输入邮箱地址">
+                <input type="email" id="email" name="email" v-model="email" placeholder="请输入邮箱地址">
             </p>
             <p>
                 <label for="phone">手机号：</label>
-                <input type="tel" id="phone" name="phone" placeholder="请输入手机号">
+                <input type="tel" id="phone" name="phone" v-model="phone" placeholder="请输入手机号">
             </p>
         </fieldset>
 
@@ -31,18 +31,18 @@
             <legend>个人信息</legend>
             <p>性别：</p>
             <p>
-                <input type="radio" id="male" name="gender" value="male" checked>
+                <input type="radio" id="male" name="gender" v-model="gender" value="male" checked>
                 <label for="male">男</label>
-                <input type="radio" id="female" name="gender" value="female">
+                <input type="radio" id="female" name="gender" v-model="gender" value="female">
                 <label for="female">女</label>
-                <input type="radio" id="secret" name="gender" value="secret">
+                <input type="radio" id="secret" name="gender" v-model="gender" value="secret">
                 <label for="secret">保密</label>
             </p>
 
             <!-- 下拉列表 -->
             <p>
                 <label for="province">所在省份：</label>
-                <select id="province" name="province">
+                <select id="province" name="province" v-model="province">
                     <option value="">--请选择省份--</option>
                     <option value="beijing">北京市</option>
                     <option value="shanghai">上海市</option>
@@ -55,7 +55,7 @@
             </p>
             <p>
                 <label for="city">所在城市：</label>
-                <select id="city" name="city">
+                <select id="city" name="city" v-model="city">
                     <option value="">--请选择城市--</option>
                     <option value="city1">城市1</option>
                     <option value="city2">城市2</option>
@@ -67,17 +67,17 @@
             <!-- 多选框 -->
             <p>兴趣爱好：</p>
             <p>
-                <input type="checkbox" id="reading" name="hobby" value="reading">
+                <input type="checkbox" id="reading" name="hobby" v-model="hobby" value="reading">
                 <label for="reading">阅读</label>
-                <input type="checkbox" id="sports" name="hobby" value="sports">
+                <input type="checkbox" id="sports" name="hobby" v-model="hobby" value="sports">
                 <label for="sports">运动</label>
-                <input type="checkbox" id="music" name="hobby" value="music">
+                <input type="checkbox" id="music" name="hobby" v-model="hobby" value="music">
                 <label for="music">音乐</label>
-                <input type="checkbox" id="travel" name="hobby" value="travel">
+                <input type="checkbox" id="travel" name="hobby" v-model="hobby" value="travel">
                 <label for="travel">旅行</label>
-                <input type="checkbox" id="game" name="hobby" value="game">
+                <input type="checkbox" id="game" name="hobby" v-model="hobby" value="game">
                 <label for="game">游戏</label>
-                <input type="checkbox" id="movie" name="hobby" value="movie">
+                <input type="checkbox" id="movie" name="hobby" v-model="hobby" value="movie">
                 <label for="movie">电影</label>
             </p>
         </fieldset>
@@ -87,7 +87,7 @@
             <legend>补充信息</legend>
             <p>
                 <label for="bio">个人简介：</label><br>
-                <textarea id="bio" name="bio" rows="5" cols="40" placeholder="请简单介绍一下自己..."></textarea>
+                <textarea id="bio" name="bio" rows="5" cols="40" v-model="bio" placeholder="请简单介绍一下自己..."></textarea>
             </p>
         </fieldset>
 
@@ -97,11 +97,36 @@
             <input type="reset" value="重置">
         </p>
     </form>
+    <fieldset>
+        <legend></legend>
+        <div>
+            {{username}}
+            {{password}}
+            {{confirmPassword}}
+            {{email}}
+            {{phone}}
+            {{gender}}
+            {{province}}
+            {{city}}
+            {{hobby}}
+            {{bio}}
+        </div>
+    </fieldset>
 </template>
 
 <script setup>
+import { ref } from "vue";
 
-
+const username = ref('admin')
+const password = ref('')
+const confirmPassword = ref('')
+const email = ref('')
+const phone = ref('')
+const gender = ref('male')
+const province = ref('')
+const city = ref('')
+const hobby = ref([])
+const bio = ref('')
 </script>
 
 <style scoped>
