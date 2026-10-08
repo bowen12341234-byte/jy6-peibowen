@@ -12,8 +12,9 @@ import Demo8 from './components/Demo8.vue'
 import Demo9 from './components/Demo9.vue'
 import Demo10 from './components/Demo10.vue'
 import Demo11 from './components/Demo11.vue'
+import Demo12 from './components/Demo12.vue'
 </script>
 
 <template>
-  <Demo11/>
+  <Demo12/>
 </template>

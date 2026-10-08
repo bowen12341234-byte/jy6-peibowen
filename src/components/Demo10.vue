@@ -17,13 +17,14 @@
     <div v-if="score >= 90">成绩等级：优秀</div>
     <div v-else-if="score >= 60">成绩等级：及格</div>
     <div v-else>成绩等级：不及格</div>
+    <div >成绩等级：</div>
   </div>
 </template>
 
 <script setup>
 import {ref} from 'vue'
 const isLogin = ref(false)
-const score = ref(0)
+const score = ref()
 </script>
 
 <style scoped>
