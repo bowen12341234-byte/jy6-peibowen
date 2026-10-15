@@ -14,8 +14,11 @@ import Demo10 from './components/Demo10.vue'
 import Demo11 from './components/Demo11.vue'
 import Demo12 from './components/Demo12.vue'
 import Demo13 from './components/Demo13.vue'
+import Demo14 from './components/Demo14.vue'
+import Demo15 from './components/Demo15.vue'
+import Demo16 from './components/Demo16.vue'
 </script>
 
 <template>
-  <Demo13/>
+  <Demo14/>
 </template>
