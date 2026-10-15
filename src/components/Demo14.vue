@@ -53,6 +53,18 @@ import { computed,reactive,ref } from 'vue'
       }
       
      )
+     //总件
+     const totalcount = computed(
+      ()=>{
+         let count = 0;
+         goods.forEach(
+            item=>{
+           count += item.num
+         })
+         return count
+      }
+      
+     )
 
      //500
      const newGoods = computed(
