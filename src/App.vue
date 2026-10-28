@@ -1,4 +1,4 @@
-<script setup>
+<!--<script setup>
 import HelloWorld from './components/HelloWorld.vue'
 import Demo1 from './components/Demo1.vue'
 import Demo2 from './components/Demo2.vue'
@@ -20,8 +20,24 @@ import Demo16 from './components/Demo16.vue'
 import Demo17 from './components/Demo17.vue'
 import Demo18 from './components/Demo18.vue'
 import Demo19 from './components/Demo19.vue'
+import Demo20 from './components/Demo20.vue'
+import Demo21 from './views/Demo21.vue'
 </script>
 
 <template>
   <Demo19/>
+</template>-->
+<template>
+  <div class="app-container">
+    <Header title="我的第一个商城" username="张三"/>
+    <div class="main-content">页面主体</div>
+    <Header title="底部备用导航" username="李四"/>
+  </div>
 </template>
+<script setup>
+import Header from './components/Header.vue'
+</script>
+<style scoped>
+  .app-container{max-width:800px;margin:0 auto;}
+  .main-content{padding:20px;text-align:center;}
+</style>
