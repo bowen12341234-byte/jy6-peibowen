@@ -27,7 +27,7 @@ import Demo21 from './views/Demo21.vue'
 <template>
   <Demo19/>
 </template>-->
-<template>
+<!--<template>
   <div class="app-container">
     <Header title="我的第一个商城" username="张三"/>
     <div class="main-content">页面主体</div>
@@ -40,4 +40,21 @@ import Header from './components/Header.vue'
 <style scoped>
   .app-container{max-width:800px;margin:0 auto;}
   .main-content{padding:20px;text-align:center;}
+</style>-->
+<template>
+  <div class="app-container">
+    <Header1 title="商城首页" :userInfo="u1" :taglist="tags"/>
+    <!-- 不传对象数组，观察工厂函数生成默认值 -->
+    <Header1 title="备用导航"/>
+  </div>
+</template>
+
+<script setup>
+import Header1 from './components/Header1.vue'
+const u1 = {name:"小明",id:1001}
+const tags = ['VIP','新用户']
+</script>
+
+<style scoped>
+.app-container{max-width:800px;margin:0 auto;}
 </style>
