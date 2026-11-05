@@ -41,15 +41,14 @@ import Header from './components/Header.vue'
   .app-container{max-width:800px;margin:0 auto;}
   .main-content{padding:20px;text-align:center;}
 </style>-->
-<template>
+<!--<template>
   <div class="app-container">
     <Header1 title="商城首页" :userInfo="u1" :taglist="tags"/>
     <!-- 不传对象数组，观察工厂函数生成默认值 -->
     <Header1 title="备用导航"/>
   </div>
-</template>
-
-<script setup>
+</template>-->
+<!--<script setup>
 import Header1 from './components/Header1.vue'
 const u1 = {name:"小明",id:1001}
 const tags = ['VIP','新用户']
@@ -57,4 +56,12 @@ const tags = ['VIP','新用户']
 
 <style scoped>
 .app-container{max-width:800px;margin:0 auto;}
-</style>
+</style>-->
+<template>
+  <!-- 把原来的商城首页内容删掉，换成你的练习组件 -->
+  <Demo24 />
+</template>
+
+<script setup>
+import Demo24 from './components/Demo24.vue';
+</script>
