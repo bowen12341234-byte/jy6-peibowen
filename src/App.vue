@@ -44,10 +44,10 @@ import Header from './components/Header.vue'
 <!--<template>
   <div class="app-container">
     <Header1 title="商城首页" :userInfo="u1" :taglist="tags"/>
-    <!-- 不传对象数组，观察工厂函数生成默认值 -->
+    <!-- 不传对象数组，观察工厂函数生成默认值 
     <Header1 title="备用导航"/>
   </div>
-</template>-->
+</template> -->
 <!--<script setup>
 import Header1 from './components/Header1.vue'
 const u1 = {name:"小明",id:1001}
