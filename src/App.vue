@@ -127,7 +127,15 @@ const handleDelTodo = (delId)=>{
       <button @click="sayHi">点我（父组件的方法）</button>
     </MyCard>
 
-    <MyCard></MyCard>
+    <MyCard>
+      <template #title>商品介绍</template>
+      <p>这是第二张卡片，使用了默认内容。</p>
+      <button @click="sayHi">再点我（父组件的方法）</button>
+    </MyCard>
+
+    <MyCard>
+      
+    </MyCard>
   </div>
 </template>
 
