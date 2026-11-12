@@ -1,23 +1,28 @@
 <template>
   <div class="header">
     <h2>{{ title }}</h2>
-    <p>当前用户：{{ username }}</p>
+    <p>用户名：{{ userInfo.name }}</p>
+    <p>用户ID：{{ userInfo.id }}</p>
+    <p>标签列表：{{ tagList }}</p>
   </div>
 </template>
+
 <script setup>
 defineProps({
-  title: String,
-  username: String
+  title:{
+    type:String,
+    required:true
+  },
+  userInfo:{
+    type:Object,
+    default: ()=>({name:"游客",id:0})
+  },
+  tagList:{
+    type:Array,
+    default: ()=>[]
+  }
 })
 </script>
+
 <style scoped>
-  .header {
-    height: 80px;
-    background: #42b983;
-    color: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding:0 20px;
-  }
 </style>

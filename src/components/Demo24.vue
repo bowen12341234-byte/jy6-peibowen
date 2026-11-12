@@ -29,7 +29,6 @@ const handleUpdateNum = (id, num) => {
   }
 }
 
-// 处理删除
 const handleRemove = (id) => {
   const index = goods.findIndex(item => item.id === id);
   if (index > -1) {
