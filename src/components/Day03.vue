@@ -1,6 +1,6 @@
 <template>
   <h1>子组件</h1>
-  <div v-for="good in goodList" >
+  <div v-for="good in goodList" :key="good.id">
     <slot :item="good">
       {{ good.id }} {{ good.gname }} {{ good.price }}
     </slot>
