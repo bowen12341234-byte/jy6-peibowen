@@ -1,4 +1,4 @@
-<!--<script setup>
+<script setup>
 import HelloWorld from './components/HelloWorld.vue'
 import Demo1 from './components/Demo1.vue'
 import Demo2 from './components/Demo2.vue'
@@ -22,14 +22,16 @@ import Demo18 from './components/Demo18.vue'
 import Demo19 from './components/Demo19.vue'
 import Demo20 from './components/Demo20.vue'
 import Demo21 from './views/Demo21.vue'
-import Day01 from './components/Day01.vue'
+import D1 from './views/D1.vue'
+import D2 from './views/D2.vue'
+import D3 from './views/D3.vue'
 </script>
 
 <template>
-  <Day01></Day01>
-    <h1>标题</h1>
-    <button @click="say">按钮</button>
-</template>-->
+  <D3/> 
+</template>
+
+
 <!--<template>
   <div class="app-container">
     <Header title="我的第一个商城" username="张三"/>
@@ -44,6 +46,10 @@ import Header from './components/Header.vue'
   .app-container{max-width:800px;margin:0 auto;}
   .main-content{padding:20px;text-align:center;}
 </style>-->
+
+
+
+
 <!--<template>
   <div class="app-container">
     <Header1 title="商城首页" :userInfo="u1" :taglist="tags"/>
@@ -60,6 +66,10 @@ const tags = ['VIP','新用户']
 <style scoped>
 .app-container{max-width:800px;margin:0 auto;}
 </style>-->
+
+
+
+
 <!--<template>
   <!-- 把原来的商城首页内容删掉，换成你的练习组件
   <Demo24 />
@@ -68,6 +78,10 @@ const tags = ['VIP','新用户']
 <script setup>
 import Demo24 from './components/Demo24.vue';
 </script>-->
+
+
+
+
 <!--<template>
   <div id="app">
     <Header title="综合商城" username="小萌"/>
@@ -117,12 +131,15 @@ const handleDelTodo = (delId)=>{
 <style scoped>
 </style>-->
 
-<template>
+
+
+
+<!--<template>
   <div class="app">
     <h2>课时1：默认插槽与后备内容</h2>
 
     <MyCard>
-      <template #title>商品介绍</template>
+      商品介绍
       <p>这是第一张卡片，父组件传入了文字。</p>
       <button @click="sayHi">点我（父组件的方法）</button>
     </MyCard>
@@ -152,4 +169,4 @@ const sayHi = () => {
   max-width: 700px;
   margin: 30px auto;
 }
-</style>
+</style>-->
