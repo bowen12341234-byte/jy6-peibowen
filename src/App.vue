@@ -1,4 +1,4 @@
-<script setup>
+<!--<script setup>
 import HelloWorld from './components/HelloWorld.vue'
 import Demo1 from './components/Demo1.vue'
 import Demo2 from './components/Demo2.vue'
@@ -29,7 +29,7 @@ import D3 from './views/D3.vue'
 
 <template>
   <D3/> 
-</template>
+</template>-->
 
 
 <!--<template>
@@ -170,3 +170,105 @@ const sayHi = () => {
   margin: 30px auto;
 }
 </style>-->
+
+
+
+
+
+
+<template>
+  <div class="app">
+    <h2>迷你商品后台（插槽综合实战）</h2>
+    <MyCard>
+      <template #title>📦 商品库存列表</template>
+      <GoodsTable :columns="columns" :data="goodsList">
+        <template #colPrice="{ row }">
+          <span style="color: #f56c6c; font-weight: bold">¥{{ row.price }}</span>
+        </template>
+        <template #colStock="{ row }">
+          <span :style="{ color: row.stock < 20 ? '#f56c6c' : '#67c23a' }">
+            {{ row.stock < 20 ? `仅剩 ${row.stock} 件⚠` : `${row.stock} 件` }}
+          </span>
+        </template>
+        <template #colOps="{ row, index }">
+          <button class="del-btn" @click="askDelete(row, index)">删除</button>
+        </template>
+      </GoodsTable>
+    </MyCard>
+    <MyModal v-if="showDelModal">
+      <template #header>
+        <h3 style="margin: 0">⚠ 危险操作提示</h3>
+      </template>
+      <template #default>
+        <p>
+          确认要永久删除商品吗？此操作不可恢复！
+          <b style="color: #f56c6c">【{{ pendingRow.name }}】</b>
+        </p>
+      </template>
+      <template #footer>
+        <button @click="showDelModal = false">取消</button>
+        <button class="danger" @click="confirmDelete">确认删除</button>
+      </template>
+    </MyModal>
+  </div>
+</template>
+
+<script setup>
+import { ref, computed } from 'vue';
+import MyCard from './components/MyCard.vue';
+import MyModal from './components/MyModal.vue';
+import GoodsTable from './components/GoodsTable.vue';
+
+// ---------- 列配置：告诉表格有哪些列，列名对应插槽名 ----------
+const columns = [
+  { prop: 'name', label: '商品名称', slot: 'colName' },
+  { prop: 'price', label: '价格', slot: 'colPrice' },
+  { prop: 'stock', label: '库存', slot: 'colStock' },
+  { prop: 'ops', label: '操作', slot: 'colOps' }
+];
+
+// ---------- 商品数据 (响应式，删除后表格自动更新) ----------
+const goodsList = ref([
+  { id: 1, name: '无线鼠标', price: 99, stock: 56 },
+  { id: 2, name: '机械键盘', price: 299, stock: 18 },
+  { id: 3, name: '4K 显示器', price: 899, stock: 32 },
+  { id: 4, name: 'USB-C 扩展坞', price: 149, stock: 9 }
+]);
+
+// ---------- 删除弹窗状态与逻辑 (全部在父组件) ----------
+const showDelModal = ref(false);
+const pendingRow = ref(null);
+const pendingIndex = ref(-1);
+
+const askDelete = (row, index) => {
+  pendingRow.value = row;
+  pendingIndex.value = index;
+  showDelModal.value = true;
+};
+
+const confirmDelete = () => {
+  goodsList.value.splice(pendingIndex.value, 1);
+  showDelModal.value = false;
+  console.log('已删除：', pendingRow.value.name);
+};
+</script>
+
+<style scoped>
+.app {
+  max-width: 700px;
+  margin: 30px auto;
+}
+.del-btn {
+  background: #f56c6c;
+  color: #fff;
+  border: none;
+  padding: 4px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.danger {
+  background: #f56c6c;
+  color: #fff;
+  border: none;
+}
+</style>
