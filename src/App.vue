@@ -25,10 +25,12 @@ import Demo21 from './views/Demo21.vue'
 import D1 from './views/D1.vue'
 import D2 from './views/D2.vue'
 import D3 from './views/D3.vue'
+import D4 from './views/D4.vue'
+
 </script>
 
 <template>
-  <D3/> 
+  <D4/> 
 </template>-->
 
 
@@ -176,7 +178,7 @@ const sayHi = () => {
 
 
 
-<template>
+<!--<template>
   <div class="app">
     <h2>迷你商品后台（插槽综合实战）</h2>
     <MyCard>
@@ -270,5 +272,69 @@ const confirmDelete = () => {
   background: #f56c6c;
   color: #fff;
   border: none;
+}
+</style>-->
+
+
+
+
+
+ <template>
+  <div class="app-container" :style="{ fontSize: theme.fontSize }">
+    <h2>全局主题系统（工程化 provide/inject）</h2>
+
+    <div class="setting-panel">
+      <label>
+        主题色：
+        <select v-model="colorDraft" @change="updateTheme({ color: colorDraft })">
+          <option value="#409eff">商务蓝</option>
+          <option value="#f56c6c">警示红</option>
+          <option value="#67c23a">自然绿</option>
+        </select>
+      </label>
+      <label>
+        字号：
+        <button @click="updateTheme({ fontSize: '12px' })">小</button>
+        <button @click="updateTheme({ fontSize: '16px' })">中</button>
+        <button @click="updateTheme({ fontSize: '20px' })">大</button>
+      </label>
+    </div>
+    <Child />
+  </div>
+</template>
+<script setup>
+import { provide, reactive, ref } from 'vue';
+import Child from './components/Child.vue';
+
+// 一整套主题配置：reactive 集中管理
+const theme = reactive({
+  color: '#409eff',
+  fontSize: '16px'
+});
+
+// 唯一修改入口：所有变更逻辑收敛在此
+const updateTheme = (patch) => {
+  Object.assign(theme, patch);
+};
+
+provide('app-theme', theme);
+provide('app-updateTheme', updateTheme);
+
+// 设置中心本地的草稿变量（只属于 App 的局部状态）
+const colorDraft = ref(theme.color);
+
+const resetTheme = () => Object.assign(theme, { color: '#409eff', fontSize: '16px' });
+provide('app-resetTheme', resetTheme);
+</script>
+<style scoped>
+.app-container {
+  max-width: 600px;
+  margin: 20px auto;
+}
+.setting-panel {
+  padding: 10px;
+  background: #f5f7fa;
+  border-radius: 6px;
+  margin-bottom: 10px;
 }
 </style>
