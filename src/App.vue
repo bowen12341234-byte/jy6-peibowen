@@ -279,7 +279,7 @@ const confirmDelete = () => {
 
 
 
- <template>
+ <!--<template>
   <div class="app-container" :style="{ fontSize: theme.fontSize }">
     <h2>全局主题系统（工程化 provide/inject）</h2>
 
@@ -337,4 +337,52 @@ provide('app-resetTheme', resetTheme);
   border-radius: 6px;
   margin-bottom: 10px;
 }
+</style>-->
+
+
+
+
+
+
+<template>
+  <div class="app-container" :style="{ fontSize: theme.fontSize }">
+    <hr />
+    <h2>迷你商品后台 · 多标签版（keep-alive 缓存）</h2>
+    <div class="tab-btn-group">
+      <button
+        v-for="t in tabList"
+        :key="t.value"
+        :class="{ active: currentTab === t.value }"
+        @click="currentTab = t.value"
+      >{{ t.label }}</button>
+    </div>
+    <keep-alive :include="['TabHome', 'TabOrder']" :max="2">
+      <component :is="tabMap[currentTab]" />
+    </keep-alive>
+  </div>
+</template>
+
+<script setup>
+import { ref, reactive, provide } from 'vue';
+import TabHome from './components/TabHome.vue';
+import TabOrder from './components/TabOrder.vue';
+import TabUser from './components/TabUser.vue';
+
+const theme = reactive({ fontSize: '16px' });   // 补回模板用到的 theme
+provide('theme', theme);                          // key 与 Child/GrandSon 的 inject 对齐
+
+const tabList = [
+  { value: 'TabHome', label: '商品列表' },
+  { value: 'TabOrder', label: '订单管理' },
+  { value: 'TabUser', label: '用户设置' }
+];
+const currentTab = ref('TabHome');
+const tabMap = { TabHome, TabOrder, TabUser };   // :is 传组件对象
+</script>
+
+<style scoped>
+.app-container { padding: 20px; }
+.tab-btn-group { margin-bottom: 12px; }
+.tab-btn-group button { margin-right: 8px; padding: 6px 14px; cursor: pointer; }
+.tab-btn-group button.active { background: #42b983; color: #fff; border: none; }
 </style>
